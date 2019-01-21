@@ -16,6 +16,7 @@
 		B11E4D0621F49466006E95CB /* MVVMReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11E4D0521F49466006E95CB /* MVVMReactiveTests.swift */; };
 		B11E4D1121F49530006E95CB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11E4D1021F49530006E95CB /* ViewModel.swift */; };
 		B11E4D1321F49581006E95CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11E4D1221F49581006E95CB /* Coordinator.swift */; };
+		B1DB282A21F5E51900092111 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB282921F5E51900092111 /* Service.swift */; };
 		F7ED8D684A94125D8D6A5B57 /* Pods_MVVMReactiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09533A8C60E6C1501925B5EE /* Pods_MVVMReactiveTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		B11E4D0721F49466006E95CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B11E4D1021F49530006E95CB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B11E4D1221F49581006E95CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B1DB282921F5E51900092111 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C6EAB55A7F2B7279B3ED3054 /* Pods-MVVMReactive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMReactive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMReactive/Pods-MVVMReactive.debug.xcconfig"; sourceTree = "<group>"; };
 		CBC531CC66C03D9133E944ED /* Pods_MVVMReactive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMReactive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8043AE961DF8C179341BB58 /* Pods-MVVMReactiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMReactiveTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMReactiveTests/Pods-MVVMReactiveTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				B11E4CF221F49464006E95CB /* ViewController.swift */,
 				B11E4D1221F49581006E95CB /* Coordinator.swift */,
 				B11E4D1021F49530006E95CB /* ViewModel.swift */,
+				B1DB282921F5E51900092111 /* Service.swift */,
 				B11E4CF421F49464006E95CB /* Main.storyboard */,
 				B11E4CF721F49466006E95CB /* Assets.xcassets */,
 				B11E4CF921F49466006E95CB /* LaunchScreen.storyboard */,
@@ -301,6 +304,7 @@
 			files = (
 				B11E4D1321F49581006E95CB /* Coordinator.swift in Sources */,
 				B11E4CF321F49464006E95CB /* ViewController.swift in Sources */,
+				B1DB282A21F5E51900092111 /* Service.swift in Sources */,
 				B11E4D1121F49530006E95CB /* ViewModel.swift in Sources */,
 				B11E4CF121F49464006E95CB /* AppDelegate.swift in Sources */,
 			);

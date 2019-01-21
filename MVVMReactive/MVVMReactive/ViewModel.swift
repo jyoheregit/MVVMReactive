@@ -11,9 +11,14 @@ import ReactiveSwift
 
 class ViewModel {
     
-    var values = MutableProperty<Array<String>>([])
+    var serviceProtocol : ServiceProtocol?
+    var data = MutableProperty<Array<String>>([])
     
     func fetchData() {
-        values.value = ["One", "Two", "Three"]
+        serviceProtocol?
+            .fetchData()
+            .startWithValues { (data) in
+                self.data.value = data
+            }
     }
 }
