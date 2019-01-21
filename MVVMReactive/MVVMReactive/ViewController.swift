@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
+import Result
 
 class ViewController: UIViewController {
 
+    var viewModel : ViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupBinding()
+        viewModel?.fetchData()
     }
-
-
+    
+    private func setupBinding() {
+        viewModel?.values
+                .signal
+                .observeValues({ (values) in
+                    print(values)
+                })
+    }
 }
 

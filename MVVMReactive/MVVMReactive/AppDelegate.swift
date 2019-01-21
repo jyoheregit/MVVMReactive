@@ -12,9 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    lazy var coordinator : Coordinator = {
+        window = UIWindow()
+        return Coordinator(window: window)
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        coordinator.setupInitialViewController()
         return true
     }
 
