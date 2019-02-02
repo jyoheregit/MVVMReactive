@@ -36,12 +36,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4wJ-0a-vET"/>
                     <connections>
                         <outlet property="tableView" destination="B62-bc-jsa" id="BYG-bJ-4NL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="927" y="-116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8gs-hR-E0T">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aiv-SE-OhQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c3V-G3-rue">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ySI-wn-rpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272.80000000000001" y="-564.46776611694156"/>
         </scene>
     </scenes>
 </document>

@@ -14,6 +14,12 @@ import Result
 class ViewController: UIViewController {
 
     var viewModel : ViewModel?
+    
+    lazy var loadingIndicator : LoadingIndicator = {
+        let loadingIndicator = LoadingIndicator()
+        return loadingIndicator
+    }()
+    
     var items : Array<String>?{
         didSet{
             tableView.reloadData()
@@ -24,19 +30,28 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.reactive.title <~ viewModel?.title
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         setupBinding()
+        
         viewModel?.serviceProtocol = LocalService()
         viewModel?.fetchData()
     }
     
     private func setupBinding() {
-        viewModel?.data
+        
+        // Data binding for tableview
+        viewModel?.items
                 .signal
-                .observeValues({ [weak self] (values) in
-                    self?.items = values
-                    print(values)
+                .observeValues({ [weak self] (items) in
+                    self?.items = items
+                    print(items)
                 })
+        
+        //LoadingIndicatorBinding
+        if let viewModel = viewModel {
+            self.loadingIndicator.reactive.showLoader <~ viewModel.showLoader
+        }
     }
 }
 
@@ -52,6 +67,5 @@ extension ViewController : UITableViewDataSource {
         cell.textLabel?.text = items?[indexPath.row]
         return cell
     }
-    
 }
 

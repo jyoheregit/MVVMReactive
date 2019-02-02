@@ -17,7 +17,7 @@ class Coordinator {
         self.window = window
     }
     
-    func setupInitialViewController(){
+    func setupInitialViewController() {
     
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = storyboard.instantiateInitialViewController() as? ViewController

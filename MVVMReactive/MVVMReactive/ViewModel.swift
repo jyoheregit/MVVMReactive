@@ -12,13 +12,26 @@ import ReactiveSwift
 class ViewModel {
     
     var serviceProtocol : ServiceProtocol?
-    var data = MutableProperty<Array<String>>([])
+    var title = Property(value: "title")
+
+    private var itemsProperty = MutableProperty<Array<String>>([])
+    var items : Property<Array<String>>
+    
+    private var showLoaderProperty = MutableProperty<Bool>(false)
+    var showLoader: Property<Bool>
+    
+    init(){
+        showLoader = Property(showLoaderProperty)
+        items = Property(itemsProperty)
+    }
     
     func fetchData() {
+        showLoaderProperty.value = true
         serviceProtocol?
             .fetchData()
-            .startWithValues { (data) in
-                self.data.value = data
+            .startWithValues { [weak self] (items) in
+                self?.itemsProperty.value = items
+                self?.showLoaderProperty.value = false
             }
     }
 }

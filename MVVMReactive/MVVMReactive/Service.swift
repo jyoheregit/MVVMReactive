@@ -19,7 +19,7 @@ enum CustomError : Error {
     
 }
 
-class LocalService : ServiceProtocol{
+class LocalService : ServiceProtocol {
     
     func fetchData() -> SignalProducer<Array<String>, NoError> {
         return SignalProducer { (observer, lifetime) in
