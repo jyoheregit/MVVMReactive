@@ -14,14 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     lazy var coordinator : Coordinator = {
         window = UIWindow()
-        return Coordinator(window: window)
+        return AppCoordinator(window: window)
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         coordinator.setupInitialViewController()
         return true
     }
-
 }
 

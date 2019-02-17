@@ -9,20 +9,30 @@
 import Foundation
 import UIKit
 
-class Coordinator {
+protocol Coordinator {
+    var window : UIWindow? { get set }
+    func setupInitialViewController()
+}
+
+extension Coordinator {
     
-    private var window : UIWindow?
+    func setupInitialViewController() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateInitialViewController() as? ViewController else {
+            fatalError("Initial VC not instantiated")
+        }
+        vc.viewModel = ViewModel(service: RemoteService())
+        vc.loadingIndicator = LoadingIndicator(view: vc.view)
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
+}
+
+class AppCoordinator : Coordinator {
+    
+    var window : UIWindow?
     
     init(window : UIWindow?) {
         self.window = window
-    }
-    
-    func setupInitialViewController() {
-    
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateInitialViewController() as? ViewController
-        vc?.viewModel = ViewModel()
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
     }
 }

@@ -13,52 +13,47 @@ import Result
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+
     var viewModel : ViewModel?
+    var loadingIndicator : LoadingIndicator? {
+
+        //LoadingIndicatorBinding
+        didSet {
+            if let viewModel = viewModel {
+                self.loadingIndicator?.reactive.showLoader <~ viewModel.showLoader
+            }
+        }
+    }
     
-    lazy var loadingIndicator : LoadingIndicator = {
-        let loadingIndicator = LoadingIndicator()
-        return loadingIndicator
-    }()
-    
-    var items : Array<String>?{
-        didSet{
+    var items : Array<String>? {
+        didSet {
             tableView.reloadData()
         }
     }
     
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.reactive.title <~ viewModel?.title
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         setupBinding()
-        
-        viewModel?.serviceProtocol = LocalService()
         viewModel?.fetchData()
     }
     
+    // Data binding for tableview
     private func setupBinding() {
-        
-        // Data binding for tableview
         viewModel?.items
                 .signal
-                .observeValues({ [weak self] (items) in
+                .observeValues { [weak self] (items) in
                     self?.items = items
                     print(items)
-                })
-        
-        //LoadingIndicatorBinding
-        if let viewModel = viewModel {
-            self.loadingIndicator.reactive.showLoader <~ viewModel.showLoader
-        }
+                }
     }
 }
 
 extension ViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let items = items else {return 0}
+        guard let items = items else { return 0 }
         return items.count
     }
     

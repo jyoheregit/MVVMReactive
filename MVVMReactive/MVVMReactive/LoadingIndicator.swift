@@ -10,15 +10,45 @@ import Foundation
 import ReactiveSwift
 import ReactiveCocoa
 import Result
+import UIKit
 
 protocol ActivityIndicatorProtocol {
+    var mainView : UIView { get set }
+    var activityIndicatorView : UIActivityIndicatorView { get }
+
     func showActivityIndicator()
     func hideActivityIndicator()
 }
 
+extension ActivityIndicatorProtocol {
+    
+    func showActivityIndicator() {
+        print("Show Activity Indicator")
+        mainView.addSubview(activityIndicatorView)
+        activityIndicatorView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
+        activityIndicatorView.startAnimating()
+    }
+    
+    func hideActivityIndicator() {
+        print("Hide Activity Indicator")
+        activityIndicatorView.stopAnimating()
+    }
+}
+
 class LoadingIndicator : ActivityIndicatorProtocol {
-    func showActivityIndicator() { print("Show Activity Indicator")}
-    func hideActivityIndicator() { print("Hide Activity Indicator")}
+    var mainView: UIView
+    
+    lazy var activityIndicatorView : UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicatorView
+    }()
+    
+    init(view : UIView) {
+        self.mainView = view
+    }
 }
 
 extension LoadingIndicator : ReactiveExtensionsProvider {} // Important
@@ -33,14 +63,14 @@ extension Reactive where Base : LoadingIndicator {
     
     var showLoader : BindingTarget<Bool> {
         
-        return makeBindingTarget({ (loadingIndicator, loaderFlag) in
-            if(loaderFlag){
+        return makeBindingTarget { (loadingIndicator, loaderFlag) in
+            if loaderFlag {
                 loadingIndicator.showActivityIndicator()
             }
             else {
                 loadingIndicator.hideActivityIndicator()
             }
-        })
+        }
     }
 }
 
